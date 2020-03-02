@@ -32,24 +32,28 @@
             "check-else",
             "check-whitespace"
         ],
-        "quotemark": [
-            true,
-            "single"
-        ],
+        "quotemark": {
+            "severity": "warning",
+            "options": [
+                "single"
+            ]
+        },
         "semicolon": true,
         "triple-equals": [
             true,
             "allow-null-check"
         ],
-        "typedef": [
-            true,
-            "callSignature",
-            "indexSignature",
-            "parameter",
-            "propertySignature",
-            "variableDeclarator",
-            "memberVariableDeclarator"
-        ],
+        "typedef": {
+            "severity": "warning",
+            "options": [
+                "callSignature",
+                "indexSignature",
+                "parameter",
+                "propertySignature",
+                "variableDeclarator",
+                "memberVariableDeclarator"
+            ]
+        },
         "use-strict": false,
         "variable-name": [
             true,

@@ -1,4 +1,4 @@
-import { NextFunction, Response, Request, Router } from "express";
+import { NextFunction, Response, Request, Router } from 'express';
 
 export class RushingRouter {
 
@@ -10,7 +10,7 @@ export class RushingRouter {
     }
   }
 
-  private constructor(router) {
+  private constructor(router: Router) {
     // TODO define endpoints
   }
 

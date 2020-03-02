@@ -4,7 +4,7 @@ import * as logger from 'morgan';
 import mongoose = require('mongoose');
 import errorHandler = require('errorhandler');
 
-import { RushingRouter } from './routes/rushing';
+import { RushingRouter } from './routes/rushing-routes';
 
 export class Server {
 
@@ -15,15 +15,13 @@ export class Server {
     }
 
     constructor() {
-
         this.app = express();
 
         this.config();
-
         this.routes();
     }
 
-    public config() {
+    private config() {
 
         this.app.use(logger('dev'));
         this.app.use(bodyParser.json());
@@ -33,7 +31,7 @@ export class Server {
         }));
 
         mongoose.connect('mongodb://127.0.0.1/nfl', { useNewUrlParser: true });
-        mongoose.connection.on("error", error => {
+        mongoose.connection.on('error', error => {
             console.error(error);
         });
 
