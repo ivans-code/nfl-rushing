@@ -33,6 +33,9 @@ npm-debug.log
 testem.log
 typings/
 
+#tslint
+.tscache/
+
 # e2e
 e2e/*.js
 e2e/*.map
@@ -95,6 +98,13 @@ coverage
 
 # nyc test coverage
 .nyc_output
+
+### grunt ###
+# Grunt usually compiles files inside this directory
+dist/
+
+# Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
+.tmp/
 
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
