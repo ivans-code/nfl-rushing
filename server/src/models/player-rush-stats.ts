@@ -1,7 +1,8 @@
 /* tslint:disable */
-import { prop, Typegoose } from 'typegoose';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
-class Rushing extends Typegoose {
+@modelOptions({ schemaOptions: { collection: "Rushing" } })
+class RushingModel {
     @prop()
     '1st': number;
     @prop()
@@ -36,4 +37,4 @@ class Rushing extends Typegoose {
     LngIsTD: boolean;
 }
 
-export const RushingModel = new Rushing().getModelForClass(Rushing);
+export const PlayerRushStats = getModelForClass(RushingModel);
