@@ -1,0 +1,92 @@
+<div class="main-container mat-elevation-z8">
+
+  <div *ngIf="data" class="table-container">
+
+    <table mat-table [dataSource]="data"
+    >
+      <ng-container matColumnDef="Player">
+        <th mat-header-cell *matHeaderCellDef>Player</th>
+        <td mat-cell *matCellDef="let row">{{row.Player}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Pos">
+        <th mat-header-cell *matHeaderCellDef>Pos</th>
+        <td mat-cell *matCellDef="let row">{{row.Pos}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Team">
+        <th mat-header-cell *matHeaderCellDef>Team</th>
+        <td mat-cell *matCellDef="let row">{{row.Team}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Yds">
+        <th mat-header-cell *matHeaderCellDef>Yds</th>
+        <td mat-cell *matCellDef="let row">{{row.Yds}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="TD">
+        <th mat-header-cell *matHeaderCellDef>TD</th>
+        <td mat-cell *matCellDef="let row">{{row.TD}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="YdsPG">
+        <th mat-header-cell *matHeaderCellDef>YdsPG</th>
+        <td mat-cell *matCellDef="let row">{{row.YdsPG}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="AttPG">
+        <th mat-header-cell *matHeaderCellDef>AttPG</th>
+        <td mat-cell *matCellDef="let row">{{row.AttPG}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Att">
+        <th mat-header-cell *matHeaderCellDef>Att</th>
+        <td mat-cell *matCellDef="let row">{{row.Att}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Avg">
+        <th mat-header-cell *matHeaderCellDef>Avg</th>
+        <td mat-cell *matCellDef="let row">{{row.Avg}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="1st%">
+        <th mat-header-cell *matHeaderCellDef>1st%</th>
+        <td mat-cell *matCellDef="let row">{{row["1st%"]}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="20+">
+        <th mat-header-cell *matHeaderCellDef>20+</th>
+        <td mat-cell *matCellDef="let row">{{row["20+"]}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="40+">
+        <th mat-header-cell *matHeaderCellDef>40+</th>
+        <td mat-cell *matCellDef="let row">{{row["40+"]}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="1st">
+        <th mat-header-cell *matHeaderCellDef>1st</th>
+        <td mat-cell *matCellDef="let row">{{row["1st"]}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Lng">
+        <th mat-header-cell *matHeaderCellDef>Lng</th>
+        <td mat-cell *matCellDef="let row">{{row.Lng}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="LngIsTD">
+        <th mat-header-cell *matHeaderCellDef>LngIsTD</th>
+        <td mat-cell *matCellDef="let row">{{row.LngIsTD}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Fum">
+        <th mat-header-cell *matHeaderCellDef>Fum</th>
+        <td mat-cell *matCellDef="let row">{{row.Fum}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</div>
