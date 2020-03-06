@@ -57,7 +57,7 @@ If you have any questions regarding requirements, do not hesitate to email your 
 
 Ensure you have Docker installed on your machine  
 
-After cloning repo, run the following commands in the root directory of the repo  
+After cloning the repo, run the following commands in the root directory of the repo  
 ````
 docker-compose build
 ````  
@@ -65,7 +65,7 @@ docker-compose build
 docker-compose up
 ````
 
-Then navigate to <b>http://localhost:80<b> in your favourite browser.
+Then navigate to <b>http://localhost:80</b> in your favourite browser.
 
 
 
