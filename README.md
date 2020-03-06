@@ -65,7 +65,7 @@ docker-compose build
 docker-compose up
 ````
 
-Then navigate to <b>http://localhost:80</b> in your favourite browser.
+Then navigate to <b>http://localhost</b> or <b>http://127.0.0.1:80</b> in your favourite browser.
 
 
 
