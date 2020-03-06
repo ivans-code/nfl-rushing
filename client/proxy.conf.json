@@ -2,5 +2,9 @@
     "/rushing": {
         "target": "http://localhost:3000",
         "secure": false
+    },
+    "/autocomplete": {
+        "target": "http://localhost:3000",
+        "secure": false
     }
 }

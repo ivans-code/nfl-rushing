@@ -1,15 +1,15 @@
 <form class="search-form">
-  <mat-form-field class="search-full-width">
+  <mat-form-field class="search-bar">
     <mat-label>Search For Player</mat-label>
     <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" (keyup.enter)="search()">
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="search()"  >
-      <mat-option *ngFor="let option of playerSuggestions | async" [value]="option.Player">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="searchById()" [displayWith]="getPlayerName" >
+      <mat-option *ngFor="let option of playerSuggestions | async" [value]="option">
         {{option.Player}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="sort-select">
     <mat-label>Sort By</mat-label>
     <mat-select [formControl]="sortControl" required>
         <mat-option *ngFor="let sortOption of sortOptions" [value]="sortOption">
@@ -17,8 +17,10 @@
         </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <button mat-stroked-button color="warn" (click)="search()">Search</button>
+  <button mat-stroked-button color="warn" (click)="downloadCSV()">Download as CSV</button>
   
 </form>
-<button mat-stroked-button color="warn" (click)="search()">Search</button>
-<button mat-stroked-button color="warn" (click)="downloadCSV()">Download as CSV</button>
+
 <app-stats-table [data]="searchData"></app-stats-table>

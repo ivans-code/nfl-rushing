@@ -24,7 +24,7 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.searchControl.valueChanges.subscribe(input => {
-      this.playerSuggestions = this.nflStatsService.getRushingStats({ filter: input });
+      this.playerSuggestions = this.nflStatsService.getAutocomplete({ filter: input });
     })
 
     this.sortControl.valueChanges.subscribe(_ => {
@@ -35,18 +35,6 @@ export class SearchBarComponent implements OnInit {
 
   }
 
-  getParams() {
-    const params = {}
-    if (this.sortControl.value) {
-      params['sort'] = this.sortControl.value
-    }
-    if (this.searchControl.value) {
-      params['filter'] = this.searchControl.value
-    }
-    return params;
-
-  }
-
   search() {
     this.playerSuggestions = null;
     this.nflStatsService.getRushingStats(this.getParams()).subscribe(stats => {
@@ -54,13 +42,51 @@ export class SearchBarComponent implements OnInit {
     });
   }
 
+  searchById() {
+    this.playerSuggestions = null;
+    const selected = this.searchControl.value;
+    if (selected && selected._id) {
+      this.nflStatsService.getPlayerRushStats(selected._id).subscribe(stats => {
+        this.searchData = [stats];
+      });
+    }
+  }
+
+  getParams() {
+    const params = {}
+
+    if (this.sortControl.value) {
+      params['sort'] = this.sortControl.value
+    }
+    if (this.searchControl.value) {
+      params['filter'] = this.searchControl.value;
+    }
+
+    return params;
+  }
+
+  getPlayerName(option: any): string {
+    return option && option.Player ? option.Player : '';
+  }
 
   // TODO move the download functionality to a service
   downloadCSV() {
-    const rawCSV = this.flatObjectListToCSV(this.searchData);
+    const cleanSearchData = this.removeKeyFromObjList(this.searchData, '_id');
+
+    const rawCSV = this.flatObjectListToCSV(cleanSearchData);
     const blob = new Blob([rawCSV], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
     window.open(url);
+  }
+
+  removeKeyFromObjList(objList: any[], key: string): any[] {
+    const result = [];
+    this.searchData.forEach(obj => {
+      const objCopy = Object.assign({}, obj);
+      delete objCopy[key];
+      result.push(objCopy);
+    })
+    return result;
   }
 
   flatObjectListToCSV(objArray: any[]): string {
