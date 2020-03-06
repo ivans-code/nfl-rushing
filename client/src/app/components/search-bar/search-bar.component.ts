@@ -53,13 +53,17 @@ export class SearchBarComponent implements OnInit {
   }
 
   getParams() {
-    const params = {}
+    const params: any = {}
 
     if (this.sortControl.value) {
-      params['sort'] = this.sortControl.value
+      params.sort = this.sortControl.value
     }
     if (this.searchControl.value) {
-      params['filter'] = this.searchControl.value;
+      if (this.searchControl.value === Object(this.searchControl.value)) {
+        params.filter = this.searchControl.value.Player;
+      } else {
+        params.filter = this.searchControl.value;
+      }
     }
 
     return params;
