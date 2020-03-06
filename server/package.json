@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development && grunt && nodemon ./bin/www",
+    "dev": "export NODE_ENV=\"development\" && grunt && nodemon ./bin/www",
     "grunt": "grunt",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "prod": "export NODE_ENV=\"production\" && grunt && node ./bin/www"
   },
   "dependencies": {
     "@typegoose/typegoose": "^6.4.0",

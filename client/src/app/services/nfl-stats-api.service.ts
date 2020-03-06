@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class NflStatsApiService {
 
-  rushingStatsEndpoint = '/rushing';
+  rushingStatsEndpoint = 'http://localhost:3000/rushing';
 
   constructor(private http: HttpClient) { }
   getRushingStats(params): Observable<any[]> {

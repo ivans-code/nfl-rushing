@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+    
+    mongo:
+        image: mongo:latest
+        ports:
+            - 27017:27017
+
+    mongo-import:
+        build: db/
+        links:
+            - mongo
+        depends_on: 
+            - mongo
+        
+
+    server:
+        build: server/
+        ports:
+            - 3000:3000
+        links:
+            - mongo
+            - mongo-import
+        depends_on: 
+            - mongo
+            - mongo-import
+        restart: on-failure:10
+    
+    client:
+        build: client/
+        ports:
+            - 80:80
+
+
