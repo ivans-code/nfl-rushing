@@ -40,4 +40,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-tslint');
 
     grunt.registerTask('default', ['ts', 'tslint']);
+    grunt.registerTask('dev', ['ts', 'watch']);
 };

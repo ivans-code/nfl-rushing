@@ -1,7 +1,7 @@
 
 import { ParserUtil } from '../../utils/parser-util';
 
-export const rushingvalidator = (req, res, next) => {
+export const rushingValidator = (req, res, next) => {
     const sort: string = req.query.sort;
 
     const sortOptions: string[] = ['Yds', 'Lng', 'TD'];
