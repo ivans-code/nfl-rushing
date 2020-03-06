@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { NflStatsApiService } from 'src/app/services/nfl-stats-api.service';
 import { PlayerStat } from '../../models/player-stat';
+import { saveAs } from 'file-saver';
 
 
 
@@ -79,8 +80,7 @@ export class SearchBarComponent implements OnInit {
 
     const rawCSV = this.flatObjectListToCSV(cleanSearchData);
     const blob = new Blob([rawCSV], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    window.open(url);
+    saveAs(blob, 'rushing-stats.csv');
   }
 
   removeKeyFromObjList(objList: any[], key: string): any[] {
